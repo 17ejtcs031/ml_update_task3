@@ -108,10 +108,10 @@ for element in model_history:
 # converting string into float
 
 accuracy = str1[80:87]
-print accuracy
+print(accuracy)
 accuracy_f = float(accuracy)
 val_accuracy = str1[122:129]
-print val_accuracy
+print(val_accuracy)
 val_accuracy_f = float(val_accuracy)
 
 # saving variable into seperate files
