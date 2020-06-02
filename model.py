@@ -4,7 +4,7 @@ model = VGG16(weights='/root/model/vgg16_weights_tf_dim_ordering_tf_kernels_noto
 model.layers[0].input
 
 for layer in model.layers:
-layer.trainable = False
+        layer.trainable = False
         
 model.output
 top_model = model.output
