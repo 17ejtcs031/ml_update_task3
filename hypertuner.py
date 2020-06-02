@@ -5,13 +5,17 @@ str1 = ""
 with open('/root/model/accuracy.txt','r') as afile:
     for line in afile:
         str1 = line
+        
+acc_in_float=float(str1)
+
 str2 = ""
 with open('/root/model/val_accuracy.txt','r') as afile:
     for line in afile:
         str2 = line
-               
+val_acc_in_float=float(str2)     
+
 import os
-if (str1 < 0.80 or str2 < 0.80):
+if (acc_in_float < 0.80 or val_acc_in_float < 0.80):
     
     print("altering model")
     
