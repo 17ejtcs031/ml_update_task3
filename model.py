@@ -93,7 +93,7 @@ newmodel.save('vgg_newmodel.h5')
 
 #saving accuracy in the file
 listoflines = list()
-with open('output.txt','r') as myfile:
+with open('/root/model/output.txt','r') as myfile:
     for line in myfile:
         listoflines.append(line.strip())
 
