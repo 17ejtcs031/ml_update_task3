@@ -21,7 +21,7 @@ n2=200
 top_model = Dense(n1, activation='relu')(top_model)
 #addlayerhere
 top_model = Dense(n2, activation='relu')(top_model)
-top_model = Dense(6, activation='softmax')(top_model)
+top_model = Dense(10, activation='softmax')(top_model)
 
 from keras.models import Model
 
