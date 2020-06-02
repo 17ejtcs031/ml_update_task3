@@ -89,7 +89,6 @@ validation_steps = nb_validation_samples // batch_size_x)
 sys.stdout=orig_stdout
 f.close()
 
-newmodel.save('vgg_newmodel.h5')
 
 #saving accuracy in the file
 listoflines = list()
@@ -117,6 +116,9 @@ val_accuracy_f = float(val_accuracy)
 acc_file=open("accuracy.txt","w")
 acc_file.write('%f' % accuracy_f)
 acc_file.close()
+
 val_acc_file=open("val_accuracy.txt","w")
 val_acc_file.write('%f' % val_accuracy_f)
 val_acc_file.close()
+
+newmodel.save('vgg_newmodel.h5')
