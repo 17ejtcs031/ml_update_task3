@@ -5,7 +5,7 @@ model.layers[0].input
 
 
 for layer in model.layers:
-layer.trainable = False
+  layer.trainable = False
 
 model.output
 
