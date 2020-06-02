@@ -1,11 +1,11 @@
 
 #taking the value of accuracy and val_accuracy file
 
- str1 = ""
+str1 = ""
 with open('/root/model/accuracy.txt','r') as afile:
     for line in afile:
         str1 = line
- str2 = ""
+str2 = ""
 with open('/root/model/val_accuracy.txt','r') as afile:
     for line in afile:
         str2 = line
