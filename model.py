@@ -1,7 +1,6 @@
 from keras.applications import VGG16
 model = VGG16(weights='/root/model/vgg16_weights_tf_dim_ordering_tf_kernels_notop.h5', include_top=False, input_shape=(64, 64, 3))
 model.layers[0].input
-
 for layer in model.layers:
     layer.trainable=False
 
