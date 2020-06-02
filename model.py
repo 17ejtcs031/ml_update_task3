@@ -113,11 +113,11 @@ print(val_accuracy)
 val_accuracy_f = float(val_accuracy)
 
 # saving variable into seperate files
-acc_file=open("accuracy.txt","w")
+acc_file=open("/root/model/accuracy.txt","w")
 acc_file.write('%f' % accuracy_f)
 acc_file.close()
 
-val_acc_file=open("val_accuracy.txt","w")
+val_acc_file=open("/root/model/val_accuracy.txt","w")
 val_acc_file.write('%f' % val_accuracy_f)
 val_acc_file.close()
 
