@@ -90,3 +90,33 @@ sys.stdout=orig_stdout
 f.close()
 
 newmodel.save('vgg_newmodel.h5')
+
+#saving accuracy in the file
+listoflines = list()
+with open('output.txt','r') as myfile:
+    for line in myfile:
+        listoflines.append(line.strip())
+
+# converting list into string 
+
+model_history = listoflines[-1:]
+str1 = ""
+for element in model_history:
+    str1 = element
+#print(str1)
+
+#converting string into float
+accuracy = str1[80:87]
+print(accuracy)
+accuracy_f = float(accuracy)
+val_accuracy = str1[122:129]
+print(val_accuracy)
+val_accuracy_f = float(val_accuracy)
+
+# saving variable into seperate files
+acc_file=open("accuracy.txt","w")
+acc_file.write('%f' % accuracy_f)
+acc_file.close()
+val_acc_file=open("val_accuracy.txt","w")
+val_acc_file.write('%f' % val_accuracy_f)
+val_acc_file.close()
