@@ -11,7 +11,7 @@ acc_in_float=float(str1)
 
 str2 = ""
 with open('/root/model/val_accuracy.txt','r') as bfile:
-    for line in afile:
+    for line in bfile:
         str2 = line
 bfile.close()        
 val_acc_in_float=float(str2)     
