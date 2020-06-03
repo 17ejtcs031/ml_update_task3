@@ -16,6 +16,7 @@ with open('/root/model/val_accuracy.txt','r') as bfile:
 bfile.close()        
 val_acc_in_float=float(str2)     
 printf("from here doe,,,,,")
+"""
 "import os
 if (acc_in_float < 0.80 or val_acc_in_float < 0.80):
     print("altering model")
