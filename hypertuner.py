@@ -6,7 +6,7 @@ str1 = ""
 with open('/root/model/accuracy.txt','r') as afile:
     for line in afile:
         str1 = line
-afile.close()        
+      
 acc_in_float=float(str1)
 
 str2 = ""
@@ -25,10 +25,15 @@ if (acc_in_float < 0.80 or val_acc_in_float < 0.80):
         stripped_line = line.strip()
         new_line = stripped_line.replace("#addlayerhere","top_model = Dense(100, activation='relu')(top_model)")
         new_file_content += new_line + "\n"
-    reading_file.close()
+        
     writing_file = open("/root/model/model.py",'w')
     writing_file.write(new_file_content)
-    writing_file.close()
+  
     os.system("sed -ie 's/lr_x=0.001/lr_x=print(round(random.uniform(0.001,0.1),4))/g' /root/model/model.py")
 else:
     print("best model has already been created")
+    
+  afile.close()  
+  bfile.close()
+  reading_file.close()  
+  writing_file.close()
