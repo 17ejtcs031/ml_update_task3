@@ -17,14 +17,14 @@ from keras.models import Sequential
 from keras.layers import Dense, Flatten, Activation
 
 top_model = Flatten()(top_model)
-n1 = 700
-n2 = 500
+n1 = 128
+n2 = 200
 top_model = Dense(n1, activation='relu')(top_model)
 # addlayerhere
 
 
 top_model = Dense(n2, activation='relu')(top_model)
-top_model = Dense(10, activation='softmax')(top_model)
+top_model = Dense(2, activation='softmax')(top_model)
 
 from keras.models import Model
 
@@ -36,8 +36,8 @@ newmodel = Model(inputs=model.input, outputs=top_model)
 
 from keras.preprocessing.image import ImageDataGenerator
 
-train_data_dir = '/root/model/monkey_breed/train/'
-validation_data_dir = '/root/model/monkey_breed/validation/'
+train_data_dir = '/root/model/cnn_dataset/training_set/'
+validation_data_dir = '/root/model/cnn_dataset/test_set/'
 
 train_datagen = ImageDataGenerator(
     rescale=1./255,
@@ -52,8 +52,8 @@ validation_datagen = ImageDataGenerator(rescale=1. / 255)
 
 # Change the batchsize according to your system RAM
 
-train_batchsize = 20
-val_batchsize = 20
+train_batchsize = 16
+val_batchsize = 10
 
 train_generator = train_datagen.flow_from_directory(train_data_dir,
         target_size=(64, 64), batch_size=train_batchsize,
@@ -69,9 +69,9 @@ from keras.optimizers import RMSprop
 newmodel.compile(loss='categorical_crossentropy',
                  optimizer=RMSprop(lr=0.001), metrics=['accuracy'])
 
-nb_train_samples = 1108
-nb_validation_samples = 272
-epochs_x = 10
+nb_train_samples = 8000
+nb_validation_samples = 2000
+epochs_x = 7
 batch_size_x = 20
 
 import sys
