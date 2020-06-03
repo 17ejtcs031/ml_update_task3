@@ -15,8 +15,8 @@ with open('/root/model/val_accuracy.txt','r') as bfile:
         str2 = line
 bfile.close()        
 val_acc_in_float=float(str2)     
-
-import os
+printf("from here doe,,,,,")
+"import os
 if (acc_in_float < 0.80 or val_acc_in_float < 0.80):
     print("altering model")
     new_file_content=""
@@ -25,15 +25,15 @@ if (acc_in_float < 0.80 or val_acc_in_float < 0.80):
         stripped_line = line.strip()
         new_line = stripped_line.replace("#addlayerhere","top_model = Dense(100, activation='relu')(top_model)")
         new_file_content += new_line + "\n"
-        
+        reading_file.close()  
     writing_file = open("/root/model/model.py",'w')
     writing_file.write(new_file_content)
-  
+    writing_file.close()
     os.system("sed -ie 's/lr_x=0.001/lr_x=print(round(random.uniform(0.001,0.1),4))/g' /root/model/model.py")
 else:
     print("best model has already been created")
-    
+ """   
   afile.close()  
   bfile.close()
-  reading_file.close()  
-  writing_file.close()
+  
+
