@@ -17,14 +17,14 @@ from keras.models import Sequential
 from keras.layers import Dense, Flatten, Activation
 
 top_model = Flatten()(top_model)
-n1 = 1024
-n2 = 512
+n1 = 256
+n2 = 200
 top_model = Dense(n1, activation='relu')(top_model)
 # addlayerhere
 
 
 top_model = Dense(n2, activation='relu')(top_model)
-top_model = Dense(10, activation='softmax')(top_model)
+top_model = Dense(17, activation='softmax')(top_model)
 
 from keras.models import Model
 
@@ -36,8 +36,8 @@ newmodel = Model(inputs=model.input, outputs=top_model)
 
 from keras.preprocessing.image import ImageDataGenerator
 
-train_data_dir = '/root/model/monkey_breed/train'
-validation_data_dir = '/root/model/monkey_breed/validation'
+train_data_dir = '/root/model/17_flowers/train/'
+validation_data_dir = '/root/model/17_flowers/validation/'
 
 train_datagen = ImageDataGenerator(
     rescale=1./255,
@@ -48,12 +48,12 @@ train_datagen = ImageDataGenerator(
     fill_mode='nearest',
     )
 
-validation_datagen = ImageDataGenerator(rescale=1. / 255)
+validation_datagen = ImageDataGenerator(rescale=1./ 255)
 
 # Change the batchsize according to your system RAM
 
-train_batchsize = 32
-val_batchsize = 32
+train_batchsize = 16
+val_batchsize = 10
 
 train_generator = train_datagen.flow_from_directory(train_data_dir,
         target_size=(64, 64), batch_size=train_batchsize,
@@ -67,10 +67,10 @@ validation_generator = \
 from keras.optimizers import RMSprop
 
 newmodel.compile(loss='categorical_crossentropy',
-                 optimizer=RMSprop(lr=0.0001), metrics=['accuracy'])
+                 optimizer=RMSprop(lr=0.001), metrics=['accuracy'])
 
-nb_train_samples = 1097
-nb_validation_samples = 272
+nb_train_samples = 1190
+nb_validation_samples = 170
 epochs_x = 5
 batch_size_x = 16
 
