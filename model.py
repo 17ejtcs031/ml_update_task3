@@ -85,13 +85,15 @@ history = newmodel.fit_generator(train_generator,
                                  validation_data=validation_generator,
                                  validation_steps=nb_validation_samples
                                  // batch_size_x)
+print(max(history.history['accuracy']))
+print(max(history.history['val_accuracy']))
 
 sys.stdout = orig_stdout
 f.close()
 
 # saving accuracy in the file
 
-listoflines = list()
+"""listoflines = list()
 with open('/root/model/output.txt', 'r') as myfile:
     for line in myfile:
         listoflines.append(line.strip())
@@ -123,5 +125,21 @@ acc_file.close()
 val_acc_file = open('/root/model/val_accuracy.txt', 'w')
 val_acc_file.write('%f' % val_accuracy_f)
 val_acc_file.close()
+"""
+accuracy_f = max(history.history['accuracy'])
+print(accuracy)
 
+val_accuracy_f = max(history.history['val_accuracy'])
+print(val_accuracy)
+
+
+# saving variable into seperate files
+
+acc_file = open('/root/model/accuracy.txt', 'w')
+acc_file.write('%f' % accuracy_f)
+acc_file.close()
+
+val_acc_file = open('/root/model/val_accuracy.txt', 'w')
+val_acc_file.write('%f' % val_accuracy_f)
+val_acc_file.close()
 newmodel.save('vgg_newmodel.h5')
