@@ -6,13 +6,14 @@ str1 = ""
 with open('/root/model/accuracy.txt','r') as afile:
     for line in afile:
         str1 = line
-        
+afile.close()        
 acc_in_float=float(str1)
 
 str2 = ""
-with open('/root/model/val_accuracy.txt','r') as afile:
+with open('/root/model/val_accuracy.txt','r') as bfile:
     for line in afile:
         str2 = line
+bfile.close()        
 val_acc_in_float=float(str2)     
 
 import os
