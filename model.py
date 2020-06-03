@@ -127,10 +127,10 @@ val_acc_file.write('%f' % val_accuracy_f)
 val_acc_file.close()
 """
 accuracy_f = max(history.history['accuracy'])
-print(accuracy)
+print(accuracy_f)
 
 val_accuracy_f = max(history.history['val_accuracy'])
-print(val_accuracy)
+print(val_accuracy_f)
 
 
 # saving variable into seperate files
