@@ -17,11 +17,11 @@ from keras.models import Sequential
 from keras.layers import Dense, Flatten, Activation
 
 top_model = Flatten()(top_model)
-n1 = 300
-n2 = 200
+n1 = 700
+n2 = 500
 top_model = Dense(n1, activation='relu')(top_model)
-
 # addlayerhere
+
 
 top_model = Dense(n2, activation='relu')(top_model)
 top_model = Dense(10, activation='softmax')(top_model)
@@ -40,7 +40,7 @@ train_data_dir = '/root/model/monkey_breed/train/'
 validation_data_dir = '/root/model/monkey_breed/validation/'
 
 train_datagen = ImageDataGenerator(
-    rescale=1. / 255,
+    rescale=1./255,
     rotation_range=20,
     width_shift_range=0.2,
     height_shift_range=0.2,
@@ -52,8 +52,8 @@ validation_datagen = ImageDataGenerator(rescale=1. / 255)
 
 # Change the batchsize according to your system RAM
 
-train_batchsize = 16
-val_batchsize = 10
+train_batchsize = 20
+val_batchsize = 20
 
 train_generator = train_datagen.flow_from_directory(train_data_dir,
         target_size=(64, 64), batch_size=train_batchsize,
@@ -69,10 +69,10 @@ from keras.optimizers import RMSprop
 newmodel.compile(loss='categorical_crossentropy',
                  optimizer=RMSprop(lr=0.001), metrics=['accuracy'])
 
-nb_train_samples = 1097
+nb_train_samples = 1108
 nb_validation_samples = 272
-epochs_x = 3
-batch_size_x = 40
+epochs_x = 10
+batch_size_x = 20
 
 import sys
 orig_stdout = sys.stdout
