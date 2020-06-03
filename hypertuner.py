@@ -20,17 +20,15 @@ if (acc_in_float < 0.80 or val_acc_in_float < 0.80):
     
     print("altering model")
     
-    reading_file=open("/root/model/model.py",'r')
+    reading_file=open("/root/model/model.py",'w+')
     new_file_content=""
     for line in reading_file:
         stripped_line = line.strip()
         new_line = stripped_line.replace("#addlayerhere","top_model = Dense(100, activation='relu')(top_model)")
         new_file_content += new_line + "\n"
-        
+    #writing_file = open("/root/model/model.py",'w')
+    reading_file.write(new_file_content)
     reading_file.close()
-    writing_file = open("/root/model/model.py",'w')
-    writing_file.write(new_file_content)
-    writing_file.close()
     
     os.system("sed -ie 's/lr_x=0.001/lr_x=print(round(random.uniform(0.001,0.1),4))/g' /root/model/model.py")
 else:
