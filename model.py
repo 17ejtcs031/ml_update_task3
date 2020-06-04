@@ -71,7 +71,7 @@ newmodel.compile(loss='categorical_crossentropy',
 
 nb_train_samples = 1190
 nb_validation_samples = 170
-epochs_x = 5
+epochs_x = 10
 batch_size_x = 16
 
 import sys
